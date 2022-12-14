@@ -72,61 +72,61 @@ Here are the final test accuracies for the models:
 
 |      | SGD  | Adadelta | RMSprop |
 | :--- | ---: | ---:     | ---:    |
-| AlexNet | | | |
-| ResNet18 | | | |
-| SqueezeNet | | | |
+| AlexNet | 98.52% | 97.92% | 98.56% |
+| ResNet18 | 96.97% | 96.94% | 97.22% |
+| SqueezeNet | 99.03% | 98.95% | 99.11% |
 
 Here are the loss plots for AlexNet:
 
 |      | SGD  | Adadelta | RMSprop |
 | :--- | ---: | ---:     | ---:    |
-| AlexNet | | | |
+| AlexNet | ![](./img/alexnet_loss_sgd.png)| ![](./img/alexnet_loss_adadelta.png)| ![](./img/alexnet_loss_rmsprop.png) |
 
 Here are the accuracy plots for AlexNet:
 
 |      | SGD  | Adadelta | RMSprop |
 | :--- | ---: | ---:     | ---:    |
-| AlexNet | | | |
+| AlexNet | ![](./img/alexnet_acc_sgd.png)| ![](./img/alexnet_acc_adadelta.png)| ![](./img/alexnet_acc_rmsprop.png) |
 
 Here are the loss plots for ResNet18:
 
 |      | SGD  | Adadelta | RMSprop |
 | :--- | ---: | ---:     | ---:    |
-| ResNet18 | | | |
+| ResNet18 | ![](./img/resnet18_loss_sgd.png)| ![](./img/resnet18_loss_adadelta.png)| ![](./img/resnet18_loss_rmsprop.png) |
 
 Here are the accuracy plots for ResNet18:
 
 |      | SGD  | Adadelta | RMSprop |
 | :--- | ---: | ---:     | ---:    |
-| ResNet18 | | | |
+| ResNet18 | ![](./img/resnet18_acc_sgd.png)| ![](./img/resnet18_acc_adadelta.png)| ![](./img/resnet18_acc_rmsprop.png) |
 
 Here are the loss plots for SqueezeNet:
 
 |      | SGD  | Adadelta | RMSprop |
 | :--- | ---: | ---:     | ---:    |
-| SqueezeNet | | | |
+| SqueezeNet | ![](./img/squeezenet_loss_sgd.png)| ![](./img/squeezenet_loss_adadelta.png)| ![](./img/squeezenet_loss_rmsprop.png) |
 
 Here are the accuracy plots for SqueezeNet:
 
 |      | SGD  | Adadelta | RMSprop |
 | :--- | ---: | ---:     | ---:    |
-| SqueezeNet | | | |
+| SqueezeNet | ![](./img/squeezenet_acc_sgd.png)| ![](./img/squeezenet_acc_adadelta.png)| ![](./img/squeezenet_acc_rmsprop.png) |
 
 Here are the loss plots for all three models:
 
 |      | SGD  | Adadelta | RMSprop |
 | :--- | ---: | ---:     | ---:    |
-| AlexNet | | | |
-| ResNet18 | | | |
-| SqueezeNet | | | |
+| AlexNet | ![](./img/alexnet_loss_sgd.png)| ![](./img/alexnet_loss_adadelta.png)| ![](./img/alexnet_loss_rmsprop.png) |
+| ResNet18 | ![](./img/resnet18_loss_sgd.png)| ![](./img/resnet18_loss_adadelta.png)| ![](./img/resnet18_loss_rmsprop.png) |
+| SqueezeNet | ![](./img/squeezenet_loss_sgd.png)| ![](./img/squeezenet_loss_adadelta.png)| ![](./img/squeezenet_loss_rmsprop.png) |
 
 Here are the accuracy plots for all three models:
 
 |      | SGD  | Adadelta | RMSprop |
 | :--- | ---: | ---:     | ---:    |
-| AlexNet | | | |
-| ResNet18 | | | |
-| SqueezeNet | | | |
+| AlexNet | ![](./img/alexnet_acc_sgd.png)| ![](./img/alexnet_acc_adadelta.png)| ![](./img/alexnet_acc_rmsprop.png) |
+| ResNet18 | ![](./img/resnet18_acc_sgd.png)| ![](./img/resnet18_acc_adadelta.png)| ![](./img/resnet18_acc_rmsprop.png) |
+| SqueezeNet | ![](./img/squeezenet_acc_sgd.png)| ![](./img/squeezenet_acc_adadelta.png)| ![](./img/squeezenet_acc_rmsprop.png) |
 
 
 ## Discussion
@@ -146,7 +146,7 @@ Here are the accuracy plots for all three models:
 - Krizhevsky, A. (2014). One weird trick for parallelizing convolutional neural networks. arXiv preprint arXiv:1404.5997.  
 - Zeiler, M. D. (2012). Adadelta: an adaptive learning rate method. arXiv preprint arXiv:1212.5701.  
 - https://ruder.io/optimizing-gradient-descent/
-https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf  
+- https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf  
 
 ## Project Code
 
