@@ -26,13 +26,13 @@ The [Rice Image Dataset](https://www.kaggle.com/datasets/muratkokludataset/rice-
 
 ## Data Preprocessing
 
-The data was pre-labeled appropriately, and so, I did not have to manually label or re-label the data. When loading in the images, I resize them to 256x256x3 and then take a center crop of the image of size 224x224x3, which is the input size for all three neural network models being trained. Then, I normalize the images. I then split the data into training, validation and testing sets using an 80:10:10 split (60000 training images, 7500 validation images, and 7500 testing images). The code for data preprocessing (and the rest of the code for the experiments) can be found in our GitHub repository. 
+The data was pre-labeled appropriately, and so, I did not have to manually label or re-label the data. When loading in the images, I resize them to 256x256x3 and then take a center crop of the image of size 224x224x3, which is the input size for all three neural network models being trained. Then, I normalize the images. I then split the data into training, validation and testing sets using an 70:15:15 split (52,500 training images, 11,250 validation images, and 11,250 testing images). The code for data preprocessing (and the rest of the code for the experiments) can be found in our GitHub repository. 
 
 ## Experiment
 
 The three neural network models I apply transfer learning to were all trained on the ImageNet dataset. I experiment to see how well the "knowledge" learned by these models on the ImageNet dataset can be translated to classify these rice varieties. The models' PyTorch implementations are loaded using the Torchvision models subpackage. The optimizers' PyTorch implementations are loaded using the Torch optim subpackage. I use cross entropy loss as the loss criterion during training.
 
-The models are trained for 25 epochs. After each training epoch, the accuracy of the model on the validation set is computed. The epoch at which the model exhibits the highest validation accuracy is used to save the best-performing model. After training, the accuracy of the model on the testing set is computed.
+The models are trained for 20 epochs. After each training epoch, the accuracy of the model on the validation set is computed. The epoch at which the model exhibits the highest validation accuracy is used to save the best-performing model. After training, the accuracy of the model on the testing set is computed.
 
 ## Models
 
@@ -46,7 +46,7 @@ AlexNet is a landmark model based on CNN architecture. It won the ImageNet large
 
 [ResNet]((https://pytorch.org/hub/pytorch_vision_resnet/)) is another landmark CNN model that won the ImageNet challenge in 2015. It is the most cited neural network of the 21st century. The model was proposed by Kaiming He and his colleagues. I load the pretrained version of this model and then replace the fully connected output layer with a newly initialized fully connected layer that has 5 output nodes (for the 5 rice varieties in the dataset). I then initialize the optimizer such that only the parameters of this newly initialized fully connected layer are optimized so that I don't finetune the weights of the previous layers that have been loaded from pretraining. There are many variants of ResNet such as ResNet18, ResNet34, ResNet50 and so on, but I chose to use the ResNet18 model as it has 18 layers and is the most comparable to AlexNet in terms of number of layers.
 
-### [SqueezeNet](https://pytorch.org/hub/pytorch_vision_squeezenet/)
+### [**SqueezeNet**](https://pytorch.org/hub/pytorch_vision_squeezenet/)
 
 SqueezeNet is a smaller CNN model that was designed as a more compact replacement for AlexNet. It has almost 50x fewer parameters, performs 3x faster and achieves comparable accuracy to AlexNet on the ImageNet dataset. SqueezeNet was developed by researchers at DeepScale, Stanford University, and the University of California, Berkeley. It was proposed in a paper called [SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and < 0.5MB model size](https://arxiv.org/abs/1602.07360). I load the pretrained version of this model and then replace the last convolutional layer with a newly initialized convolutional layer that has 5 output nodes (for the 5 rice varieties in the dataset). I then initialize the optimizer such that only the parameters of this newly initialized convolutional layer are optimized so that I don't finetune the weights of the previous layers that have been loaded from pretraining.
 
@@ -54,15 +54,15 @@ SqueezeNet is a smaller CNN model that was designed as a more compact replacemen
 
 For all the optimizers, I used the same initial learning rate of 0.01. For SGD and RMSprop, I also use a momentum value of 0.9 as is standard practice.
 
-### [SGD](https://pytorch.org/docs/stable/generated/torch.optim.SGD.html)
+### [**SGD**](https://pytorch.org/docs/stable/generated/torch.optim.SGD.html)
 
 In contrast to regular gradient descent, mini-batch stochastic gradient descent (SGD) performs parameter updates for each batch of training examples rather than the entire training set. This reduces the variance of the parameter updates and generally leads to the best performance out of gradient descent variants.
 
-### [Adadelta](https://pytorch.org/docs/stable/generated/torch.optim.Adadelta.html)
+### [**Adadelta**](https://pytorch.org/docs/stable/generated/torch.optim.Adadelta.html)
 
 Adadelta is an extension of Adagrad. Adagrad tries to lower the learning rate for parameters associated with frequently occurring features and larger updates for infrequent features. Adadelta tries to reduce the monotonically decreasing learning rate of Adagrad by restricting the window of accumulated past gradients to a fixed size.
 
-### [RMSprop](https://pytorch.org/docs/stable/generated/torch.optim.RMSprop.html)
+### [**RMSprop**](https://pytorch.org/docs/stable/generated/torch.optim.RMSprop.html)
 
 RMSprop tries to solve the same issue of Adagrad that Adadelta does by resolving the rapidly diminishing learning rates. RMSprop additionally divides the learning rate by an exponentially decaying average of squared gradients. 
 
@@ -70,11 +70,11 @@ RMSprop tries to solve the same issue of Adagrad that Adadelta does by resolving
 
 Here are the final test accuracies for the models:
 
-|      | SGD  | Adadelta | RMSprop |
+|      | SGD  | Adadelta | **RMSprop** |
 | --- | :---: | :---: | :---: |
 | AlexNet | 98.52% | 97.92% | 98.56% |
 | ResNet18 | 96.97% | 96.94% | 97.22% |
-| SqueezeNet | 99.03% | 98.95% | 99.11% |
+| **SqueezeNet** | 99.03% | 98.95% | **99.11%** |
 
 Here are the loss plots for all three models:
 
@@ -95,12 +95,10 @@ Here are the accuracy plots for all three models:
 
 ## Discussion
 
-- Across the board, AlexNet is the best performing model and Adadelta is the best performing optimizer.  
-- SqueezeNet performs better than ResNet18 with SGD and Adadelta, but not with RMSprop.  
-- Perhaps the learning rate decay of RMSprop is too aggressive.  
-- AlexNet has 61M parameters, ResNet18 has 11M parameters and SqueezeNet has 1M parameters.  
-- SqueezeNet with Adadelta and RMSprop loss and accuracy curves are not smooth.  
-- Perhaps lower number of parameters contributes to less stable learning when combined with learning rate decay.  
+- Across the board, SqueezeNet is the best performing model and RMSprop is the best performing optimizer.  
+- The next best performing model is AlexNet, then followed by ResNet18.  
+- The next best performing optimizer is SGD followed by Adadelta.
+- 
 
 
 ## References
