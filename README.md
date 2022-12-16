@@ -4,7 +4,9 @@ permalink: /
 layout: default
 ---
 
-# CSE 590G1 Final Project: Rice Image Classification
+# CSE 590G1 Final Project: Transfer Leanring Applied to Rice Image Classification
+
+[![Transfer Leanring Applied to Rice Image Classification](./img/project_video_thumbnail.jpg)](https://youtu.be/V8WUvDTxpME)
 
 ## Project Description
 
@@ -98,8 +100,10 @@ Here are the accuracy plots for all three models:
 - Across the board, SqueezeNet is the best performing model and RMSprop is the best performing optimizer.  
 - The next best performing model is AlexNet, then followed by ResNet18.  
 - The next best performing optimizer is SGD followed by Adadelta.
-- 
-
+- SqueezeNet’s training performance is able to converge much quicker (in fewer epochs) than the other two models
+    - Perhaps extending training phase to more than 20 epochs will eventually result in convergence of the other two models, resulting in comparable, if not better performance than SqueezeNet.
+- SquezeNet’s original claimed that its model can achieve comparable, if not better results on image classification tasks than AlexNet, even with 50 times fewer parameters is also observed in this experiment. 
+    - However, there was discernable reduction in training time achieved by SqueezeNet when compared to AlexNet’s training time.
 
 ## References
 
