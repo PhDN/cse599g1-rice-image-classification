@@ -6,7 +6,9 @@ layout: default
 
 # CSE 590G1 Final Project: Transfer Leanring Applied to Rice Image Classification
 
-[![Transfer Leanring Applied to Rice Image Classification](./img/project_video_thumbnail.jpg)](https://youtu.be/V8WUvDTxpME)
+<p align='center'>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/V8WUvDTxpME" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</p>
 
 ## Project Description
 
